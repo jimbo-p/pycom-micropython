@@ -280,11 +280,29 @@ static bool lte_check_attached(bool legacy) {
                     mp_hal_delay_ms(LTE_RX_TIMEOUT_MIN_MS);
                     lte_push_at_command("AT+CEREG?", LTE_RX_TIMEOUT_MIN_MS);
                 }
-                if ((pos = strstr(modlte_rsp.data, "+CEREG: 1,1")) || (pos = strstr(modlte_rsp.data, "+CEREG: 1,5"))) {
+                if ((pos = strstr(modlte_rsp.data, "+CEREG: 1,1")) || 
+		    (pos = strstr(modlte_rsp.data, "+CEREG: 1,5")) || 
+		    (pos = strstr(modlte_rsp.data, "+CEREG: 2,1")) || 
+		    (pos = strstr(modlte_rsp.data, "+CEREG: 2,5")) || 
+		    (pos = strstr(modlte_rsp.data, "+CEREG: 3,1")) || 
+		    (pos = strstr(modlte_rsp.data, "+CEREG: 3,5")) || 
+		    (pos = strstr(modlte_rsp.data, "+CEREG: 4,1")) || 
+		    (pos = strstr(modlte_rsp.data, "+CEREG: 4,5")) ||
+		    (pos = strstr(modlte_rsp.data, "+CEREG: 5,1")) || 
+		    (pos = strstr(modlte_rsp.data, "+CEREG: 5,5"))) {
                     attached = true;
                 }
             } else {
-                if ((pos = strstr(modlte_rsp.data, "+CEREG: 1,1")) || (pos = strstr(modlte_rsp.data, "+CEREG: 1,5"))) {
+                if ((pos = strstr(modlte_rsp.data, "+CEREG: 1,1")) || 
+		    (pos = strstr(modlte_rsp.data, "+CEREG: 1,5")) || 
+		    (pos = strstr(modlte_rsp.data, "+CEREG: 2,1")) || 
+		    (pos = strstr(modlte_rsp.data, "+CEREG: 2,5")) || 
+		    (pos = strstr(modlte_rsp.data, "+CEREG: 3,1")) || 
+		    (pos = strstr(modlte_rsp.data, "+CEREG: 3,5")) || 
+		    (pos = strstr(modlte_rsp.data, "+CEREG: 4,1")) || 
+		    (pos = strstr(modlte_rsp.data, "+CEREG: 4,5")) ||
+		    (pos = strstr(modlte_rsp.data, "+CEREG: 5,1")) || 
+		    (pos = strstr(modlte_rsp.data, "+CEREG: 5,5"))) {
                     attached = true;
                 } else {
                     if((pos = strstr(modlte_rsp.data, "+CEREG: 1,4")))
